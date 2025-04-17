@@ -1,0 +1,24 @@
+/* WP Dancer Party Admin Styles */
+
+.wpdancer-dancer-item {
+    margin-bottom: 15px;
+}
+
+.wpdancer-dancer-item input[type="text"] {
+    width: 55%;
+    margin-right: 5px;
+}
+
+.wpdancer-dancer-item .wpdancer-preview {
+    margin-top: 5px;
+    margin-left: 5px;
+    max-width: 80px;
+    max-height: 80px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+#wpdancer_add_dancer {
+    margin-top: 10px;
+}

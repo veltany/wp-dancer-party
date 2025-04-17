@@ -1,0 +1,27 @@
+#wpdancer-dancers-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+.wpdancer {
+    position: absolute;
+    width: 80px;
+    height: auto;
+    animation: wiggle 1s infinite alternate;
+    transition: all 0.3s ease;
+}
+@keyframes wiggle {
+    from { transform: rotate(-10deg); }
+    to { transform: rotate(10deg); }
+}
+.wpdancer.resting {
+    opacity: 0.5;
+    transform: scale(0.5);
+    animation: none !important;
+}
+.wpdancer.hide {
+    display: none;
+}
+
