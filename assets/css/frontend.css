@@ -1,0 +1,45 @@
+.wpdancer-dancer {
+    position: fixed;
+    bottom: 0;
+    z-index: 9999;
+    width: 80px;
+    height: auto;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    pointer-events: none;
+}
+
+/* Animations */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes fly {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-30px) rotate(10deg); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+@keyframes fade {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Animation classes */
+.wpdancer-bounce { animation-name: bounce; }
+.wpdancer-fly { animation-name: fly; }
+.wpdancer-spin { animation-name: spin; }
+.wpdancer-shake { animation-name: shake; }
+.wpdancer-fade { animation-name: fade; }
