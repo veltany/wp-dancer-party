@@ -57,6 +57,9 @@ Not at all. It's extremely lightweight and only loads on pages where a WordPress
 = 1.0.0 =
 * Initial release 🎉
 * Dancers appear on audio play.
+
+= 1.0.1 =
+* Dancers appear on audio play.
 * Real-time beat detection.
 * Custom dancers upload support.
 * Random dance style animations.
