@@ -12,13 +12,30 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.appendChild(container);
 
     const dancers = [];
+    
+    let audioContext;
+    let analyser;
+    let source;
+    let dataArray;
 
     // Create a dancer
     function createDancer(dancerSrc) {
         const dancer = document.createElement('img');
         dancer.src = dancerSrc; 
         dancer.classList.add('wpdancer');
-        dancer.style.top = Math.random() * (window.innerHeight - 100) + 'px';
+        
+        // Randomize animation style
+        const animations = [
+        'wpdancer-bounce', 
+        'wpdancer-fly', 
+        //'wpdancer-spin', 
+        'wpdancer-shake', 
+        'wpdancer-fade'
+        ];
+        
+        dancer.classList.add(animations[Math.floor(Math.random() * animations.length)]);
+        // Random horizontal position
+        //dancer.style.top = Math.random() * (window.innerHeight - 100) + 'px';
         dancer.style.left = Math.random() * (window.innerWidth - 100) + 'px';
         container.appendChild(dancer);
         dancers.push(dancer);
@@ -66,10 +83,36 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+     function animateDancers() {
+        if (!analyser) return;
+
+        dataArray = new Uint8Array(analyser.frequencyBinCount);
+        analyser.getByteFrequencyData(dataArray);
+
+        let average = dataArray.reduce((a, b) => a + b) / dataArray.length;
+        let speed = Math.min(Math.max(average / 80, 0.1), 1); // speed between 0.5x and 3x
+
+        dancers.forEach(dancer => {
+            dancer.style.animationDuration = (2 / speed) + 's';
+        });
+
+        requestAnimationFrame(animateDancers);
+    }
+
 
     audios.forEach(audio => {
         audio.addEventListener('play', function() {
+             if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                source = audioContext.createMediaElementSource(audio);
+                analyser = audioContext.createAnalyser();
+                source.connect(analyser);
+                analyser.connect(audioContext.destination);
+            } else if (audioContext.state === 'suspended') {
+                audioContext.resume();
+            }
             startDancing();
+            animateDancers();
         });
 
         audio.addEventListener('pause', function() {
