@@ -1,9 +1,10 @@
+Animated dancers react to your WordPress audio players! Play to dance, pause to chill.
 
 # WP Dancer Party
 
 **Bring your WordPress audio players to life with animated dancers that move to the music!** 🕺💃  
 Just like the classic MP3 Dancer, but now for your website!
-Animated dancers react to your WordPress audio players! Play to dance, pause to chill.
+
 ---
 
 ## ✨ Features
