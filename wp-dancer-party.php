@@ -3,7 +3,7 @@
 Plugin Name: WP Dancer Party
 Plugin URI: https://soundwela.net/
 Description: Animated dancers react to your WordPress audio players! Play to dance, pause to chill.
-Version: 1.0
+Version: 1.0.1
 Author: Samuel Chukwu
 Author URI: https://soundwela.net/
 License: GPL2
@@ -49,11 +49,11 @@ function wpdancer_admin_enqueue($hook) {
         wp_enqueue_media();
         
         // Load Admin CSS
-        wp_enqueue_style('wpdancer-admin-css', plugin_dir_url(__FILE__) . 'assets/css/admin.css', array(), '1.0');
+        wp_enqueue_style('wpdancer-admin-css', WPDANCER_URL. 'assets/css/admin.css', array(), '1.0');
         
         
         // Load Admin JS (for media uploader)
-        wp_enqueue_script('wpdancer-admin-js', plugin_dir_url(__FILE__) . 'assets/js/admin.js', array('jquery'), '1.0', true);
+        wp_enqueue_script('wpdancer-admin-js', WPDANCER_URL. 'assets/js/admin.js', array('jquery'), '1.0', true);
     
     }
 }
@@ -62,9 +62,10 @@ add_action('admin_enqueue_scripts', 'wpdancer_admin_enqueue');
 
 
 function wpdancer_enqueue_assets() {
-    wp_enqueue_style('wpdancer-style', plugin_dir_url(__FILE__) . 'assets/css/dancer.css');
+    wp_enqueue_style('wpdancer-style', WPDANCER_URL.'assets/css/dancer.css');
+    wp_enqueue_style('wpdancer-frontend-css', WPDANCER_URL.'assets/css/frontend.css', array(), '1.0');
 
-    wp_enqueue_script('wp-dancer-script', plugin_dir_url(__FILE__) . 'assets/js/dancer.js', array(), false, true);
+    wp_enqueue_script('wp-dancer-script', WPDANCER_URL. 'assets/js/dancer.js', array(), false, true);
 
     // Localize plugin URL for JS
     $options = get_option('wpdancer_options');
@@ -79,7 +80,7 @@ function wpdancer_enqueue_assets() {
      }
      else {
         // Fallback to default dancer if none selected
-        $dancers[] = plugin_dir_url(__FILE__) . 'assets/images/default-dancer.gif'; 
+        $dancers[] = WPDANCER_URL . 'assets/images/default-dancer.gif'; 
      }
          
 
@@ -89,7 +90,7 @@ function wpdancer_enqueue_assets() {
         'custom_dancer' => isset($options['custom_dancer']) ? $options['custom_dancer'] : '',
         'sensitivity' => isset($options['sensitivity']) ? $options['sensitivity'] : 100,
         'visibility' => isset($options['visibility']) ? $options['visibility'] : 'on',
-        'url' => plugin_dir_url(__FILE__)
+        'url' => WPDANCER_URL
     );
   
     // Pass the localized settings to the JavaScript file
