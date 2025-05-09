@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let audioContext;
     let analyser;
-    //let source;
+    let source;
     let dataArray;
 
     // Create a dancer
@@ -103,14 +103,14 @@ document.addEventListener('DOMContentLoaded', function() {
     audios.forEach(audio => {
         audio.addEventListener('play', function() {
              if (!audioContext) {
-                audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                const audioElement = document.querySelector('audio'); // your audio element
-                //const audioContext = new AudioContext();
-                const source = audioContext.createMediaElementSource(audioElement);
-                analyser = audioContext.createAnalyser();
- 
-                //source = audioContext.createMediaElementSource(audio);
+               // audioContext = new (window.AudioContext || window.webkitAudioContext)();
+               // const audioElement = document.querySelector('audio'); // your audio element
+                audioContext = new AudioContext();
+                //const source = audioContext.createMediaElementSource(audioElement);
                 //analyser = audioContext.createAnalyser();
+ 
+                source = audioContext.createMediaElementSource(audio);
+                analyser = audioContext.createAnalyser();
                 source.connect(analyser);
                 analyser.connect(audioContext.destination);
             } else if (audioContext.state === 'suspended') {
