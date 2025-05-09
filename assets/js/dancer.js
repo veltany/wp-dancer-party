@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const dancers = [];
     
     let audioContext;
-    //let analyser;
+    let analyser;
     //let source;
     let dataArray;
 
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const audioElement = document.querySelector('audio'); // your audio element
                 //const audioContext = new AudioContext();
                 const source = audioContext.createMediaElementSource(audioElement);
-                const analyser = audioContext.createAnalyser();
+                analyser = audioContext.createAnalyser();
  
                 //source = audioContext.createMediaElementSource(audio);
                 //analyser = audioContext.createAnalyser();
