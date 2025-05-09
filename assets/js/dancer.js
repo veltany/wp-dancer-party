@@ -115,6 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
                  analyser = audioContext.createAnalyser();
                  source.connect(analyser);
                  analyser.connect(audioContext.destination);
+                 console.info("CORS likely okay.");
                 }
                  catch (e) {
                       console.warn("Falling back to fake dancing. CORS likely blocked audio processing.");
