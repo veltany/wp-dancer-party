@@ -3,7 +3,7 @@
 Plugin Name: WP Dancer Party
 Plugin URI: https://soundwela.net/
 Description: Animated dancers react to your WordPress audio players! Play to dance, pause to chill.
-Version: 1.0.1
+Version: 1.0.1.2
 Author: Samuel Chukwu
 Author URI: https://soundwela.net/
 License: GPL2
