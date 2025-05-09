@@ -107,15 +107,18 @@ document.addEventListener('DOMContentLoaded', function() {
         audio.addEventListener('play', function() {
              if (!audioContext) {
                // audioContext = new (window.AudioContext || window.webkitAudioContext)();
-               // const audioElement = document.querySelector('audio'); // your audio element
                 audioContext = new AudioContext();
-                //const source = audioContext.createMediaElementSource(audioElement);
-                //analyser = audioContext.createAnalyser();
- 
-                source = audioContext.createMediaElementSource(audio);
+               // Try if CORS allowed
+                 try {
+                 source = audioContext.createMediaElementSource(audio);
                 analyser = audioContext.createAnalyser();
                 source.connect(analyser);
                 analyser.connect(audioContext.destination);
+                }
+                 catch (e) {
+                      console.warn("Falling back to fake dancing. CORS likely blocked audio processing.");
+                      //startFakeDanceLoop();
+                  }
             } else if (audioContext.state === 'suspended') {
                 audioContext.resume();
             }
