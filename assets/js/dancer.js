@@ -27,10 +27,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Randomize animation style
         const animations = [
-        'wpdancer-bounce', 
-        'wpdancer-fly', 
+       // 'wpdancer-bounce', 
+        //'wpdancer-fly', 
         //'wpdancer-spin', 
-        'wpdancer-shake', 
+        //'wpdancer-shake', 
         'wpdancer-fade'
         ];
         
