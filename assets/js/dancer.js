@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 audioContext.resume();
             }
             startDancing();
-            animateDancers();
+           // animateDancers();
         });
 
         audio.addEventListener('pause', function() {
