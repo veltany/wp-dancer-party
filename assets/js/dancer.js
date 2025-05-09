@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const dancersGIF = wpdancer_plugin.dancers || wpdancer_plugin.url + 'assets/images/default-dancer.gif';
 
     const audios = document.querySelectorAll('audio');
+    audios.crossOrigin = 'anonymous';
     const container = document.createElement('div');
     container.id = 'wpdancer-dancers-container';
     document.body.appendChild(container);
