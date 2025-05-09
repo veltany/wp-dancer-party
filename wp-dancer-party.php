@@ -3,7 +3,7 @@
 Plugin Name: WP Dancer Party
 Plugin URI: https://soundwela.net/
 Description: Animated dancers react to your WordPress audio players! Play to dance, pause to chill.
-Version: 1.0.1.11
+Version: 1.0.1.12
 Author: Samuel Chukwu
 Author URI: https://soundwela.net/
 License: GPL2
@@ -22,6 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Plugin Constants
 define('WPDANCER_DIR', plugin_dir_path(__FILE__));
 define('WPDANCER_URL', plugin_dir_url(__FILE__));
+define('WPDANCER_VER', "1.0.1.12");
+
 
 //-------------------------------------
 // PLUGIN UPDATES
@@ -49,11 +51,11 @@ function wpdancer_admin_enqueue($hook) {
         wp_enqueue_media();
         
         // Load Admin CSS
-        wp_enqueue_style('wpdancer-admin-css', WPDANCER_URL. 'assets/css/admin.css', array(), '1.0');
+        wp_enqueue_style('wpdancer-admin-css', WPDANCER_URL. 'assets/css/admin.css', array(), WPDANCER_VER );
         
         
         // Load Admin JS (for media uploader)
-        wp_enqueue_script('wpdancer-admin-js', WPDANCER_URL. 'assets/js/admin.js', array('jquery'), '1.0', true);
+        wp_enqueue_script('wpdancer-admin-js', WPDANCER_URL. 'assets/js/admin.js', array('jquery'), WPDANCER_VER , true);
     
     }
 }
@@ -63,9 +65,9 @@ add_action('admin_enqueue_scripts', 'wpdancer_admin_enqueue');
 
 function wpdancer_enqueue_assets() {
     wp_enqueue_style('wpdancer-style', WPDANCER_URL.'assets/css/dancer.css');
-    wp_enqueue_style('wpdancer-frontend-css', WPDANCER_URL.'assets/css/frontend.css', array(), '1.0');
+    wp_enqueue_style('wpdancer-frontend-css', WPDANCER_URL.'assets/css/frontend.css', array(), WPDANCER_VER);
 
-    wp_enqueue_script('wp-dancer-script', WPDANCER_URL. 'assets/js/dancer.js', array(), '1.0.10', true);
+    wp_enqueue_script('wp-dancer-script', WPDANCER_URL. 'assets/js/dancer.js', array(), WPDANCER_VER, true);
 
     // Localize plugin URL for JS
     $options = get_option('wpdancer_options');
