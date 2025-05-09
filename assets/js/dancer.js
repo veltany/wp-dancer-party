@@ -118,13 +118,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                  catch (e) {
                       console.warn("Falling back to fake dancing. CORS likely blocked audio processing.");
-                      //startFakeDanceLoop();
                   }
             } else if (audioContext.state === 'suspended') {
                 audioContext.resume();
             }
             startDancing();
-           // animateDancers();
+            animateDancers();
         });
 
         audio.addEventListener('pause', function() {
