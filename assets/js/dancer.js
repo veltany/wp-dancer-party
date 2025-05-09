@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         //'wpdancer-fly', 
         //'wpdancer-spin', 
         //'wpdancer-shake', 
-        'wpdancer-fade'
+       // 'wpdancer-fade'
         ];
         
         dancer.classList.add(animations[Math.floor(Math.random() * animations.length)]);
