@@ -107,13 +107,14 @@ document.addEventListener('DOMContentLoaded', function() {
         audio.addEventListener('play', function() {
              if (!audioContext) {
                // audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                audioContext = new AudioContext();
+               
                // Try if CORS allowed
                  try {
+                 audioContext = new AudioContext();
                  source = audioContext.createMediaElementSource(audio);
-                analyser = audioContext.createAnalyser();
-                source.connect(analyser);
-                analyser.connect(audioContext.destination);
+                 analyser = audioContext.createAnalyser();
+                 source.connect(analyser);
+                 analyser.connect(audioContext.destination);
                 }
                  catch (e) {
                       console.warn("Falling back to fake dancing. CORS likely blocked audio processing.");
