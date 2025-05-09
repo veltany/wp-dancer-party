@@ -101,6 +101,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     audios.forEach(audio => {
+        audio.crossOrigin = "anonymous";
+        
         audio.addEventListener('play', function() {
              if (!audioContext) {
                // audioContext = new (window.AudioContext || window.webkitAudioContext)();
