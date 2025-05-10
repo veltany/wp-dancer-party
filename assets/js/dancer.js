@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
         analyser.getByteFrequencyData(dataArray);
 
         let average = dataArray.reduce((a, b) => a + b) / dataArray.length;
-        let speed = Math.min(Math.max(average / 80, 0.1), 1); // speed between 0.5x and 3x
+        let speed = Math.min(Math.max(average / 80, 0.5), 3); // speed between 0.5x and 3x
 
         dancers.forEach(dancer => {
             dancer.style.animationDuration = (2 / speed) + 's';
@@ -115,7 +115,6 @@ document.addEventListener('DOMContentLoaded', function() {
                  analyser = audioContext.createAnalyser();
                  source.connect(analyser);
                  analyser.connect(audioContext.destination);
-                 console.info("CORS likely okay.");
                 }
                  catch (e) {
                       console.warn("Falling back to fake dancing. CORS likely blocked audio processing.");
